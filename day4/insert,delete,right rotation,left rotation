@@ -1,0 +1,84 @@
+public class InsertElement {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+        int n = arr.length;
+        int x = 99; 
+        int y = 2;  
+        int[] newArr = new int[n + 1];
+        for (int i = 0; i < y; i++) {
+            newArr[i] = arr[i];
+        }
+        newArr[y] = x;
+        for (int i = y; i < n; i++) {
+            newArr[i + 1] = arr[i];
+        }
+        System.out.print("After Insertion: ");
+        for (int val : newArr) {
+            System.out.print(val + " ");
+        }
+    }
+}
+
+public class DeleteElement {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+        int n = arr.length;
+        int i = 2; 
+
+        int[] newArr = new int[n - 1];
+
+        for (int j = 0; j < i; j++) {
+            newArr[j] = arr[j];
+        }
+        for (int j = i; j < n - 1; j++) {
+            newArr[j] = arr[j + 1];
+        }
+
+        System.out.print("After Deletion: ");
+        for (int val : newArr) {
+            System.out.print(val + " ");
+        }
+    }
+}
+
+public class RightRotation {
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5,6,7,8,9,10};
+        int n = arr.length;
+        int times = 3;
+
+        for (int t = 0; t < times; t++) {
+            int last = arr[n - 1];
+            for (int i = n - 1; i > 0; i--) {
+                arr[i] = arr[i - 1];
+            }
+            arr[0] = last;
+        }
+
+        System.out.print("After Right Rotation: ");
+        for (int val : arr) {
+            System.out.print(val + " ");
+        }
+    }
+}
+
+public class LeftRotation {
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5,6,7,8,9,10};
+        int n = arr.length;
+        int times = 3; 
+
+        for (int t = 0; t < times; t++) {
+            int first = arr[0];
+            for (int i = 0; i < n - 1; i++) {
+                arr[i] = arr[i + 1];
+            }
+            arr[n - 1] = first;
+        }
+
+        System.out.print("After Left Rotation: ");
+        for (int val : arr) {
+            System.out.print(val + " ");
+        }
+    }
+}
