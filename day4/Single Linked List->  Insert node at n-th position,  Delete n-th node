@@ -1,0 +1,90 @@
+class LinkedList {
+    
+    class Node {
+        int data;
+        Node next;
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    Node head;
+
+
+    public void insertAtPos(int data, int pos) {
+        Node newNode = new Node(data);
+
+        if (pos == 1) { 
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+
+        Node temp = head;
+        for (int i = 1; i < pos - 1 && temp != null; i++) {
+            temp = temp.next;
+        }
+
+        if (temp == null) {
+            System.out.println("Position out of range!");
+            return;
+        }
+
+        newNode.next = temp.next;
+        temp.next = newNode;
+    }
+
+    
+    public void deleteAtPos(int pos) {
+        if (head == null) {
+            System.out.println("List is empty!");
+            return;
+        }
+
+        if (pos == 1) { 
+            head = head.next;
+            return;
+        }
+
+        Node temp = head;
+        for (int i = 1; i < pos - 1 && temp != null; i++) {
+            temp = temp.next;
+        }
+
+        if (temp == null || temp.next == null) {
+            System.out.println("Position out of range!");
+            return;
+        }
+
+        temp.next = temp.next.next;
+    }
+
+
+    public void display() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+
+        
+        list.insertAtPos(10, 1); 
+        list.insertAtPos(20, 2); 
+        list.insertAtPos(30, 3); 
+        list.insertAtPos(15, 2); 
+        list.display();
+
+        
+        list.deleteAtPos(3); 
+        list.display();
+
+        list.deleteAtPos(1); 
+        list.display();
+    }
+}
